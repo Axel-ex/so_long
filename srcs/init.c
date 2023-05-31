@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 13:53:13 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:51:04 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_game	*game_init(t_map *map)
 
 	game = ft_calloc(1, sizeof(t_game));
 	game->map = map;
+	game->torche = 0;
 	graphic_init(game);
 	load_sprites(game);
 	render_map(game);

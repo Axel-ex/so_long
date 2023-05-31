@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:33:13 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 16:45:02 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:14:32 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ char	next_move(t_game *game)
 	if (game->map->matrix[game->p->next_pos.y][game->p->next_pos.x] == WALL)
 		return (WALL);
 	if (game->map->matrix[game->p->next_pos.y][game->p->next_pos.x] == TORCHE)
+	{
 		game->torche++;
+		game->map->matrix[game->p->next_pos.y][game->p->next_pos.x] = GROUND;
+	}
 	game->p->flag_exit = 0;
 	return (0);
 }
@@ -112,4 +115,6 @@ void	move_exit(t_game *game)
 		game->sp_tiles[G].height * game->p->pos.y);
 	game->p->pos = game->p->next_pos;
 	game->p->flag_exit = 1;
+	if (game->torche == game->map->collect)
+		destroy_game(game);
 }

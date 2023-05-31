@@ -15,7 +15,7 @@ LIBMLX	=	libmlx.a
 
 MLX		=	-Lmlx -framework OpenGL -framework AppKit
 
-OBJ_DIR	=	obj/
+OBJ_DIR	=	obj
 
 
 %.o:%.c $(OBJ_DIR)
@@ -39,8 +39,9 @@ $(LIBMLX): $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 
-$(NAME): $(OBJ) $(LIBFT) $(LIBMLX)
-	cc $(FLAGS) -I $(INC) $(OBJ) Libft/$(LIBFT) $(MLX) mlx/$(LIBMLX) -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT) $(LIBMLX) $(OBJ_DIR)
+	cd $(OBJ_DIR)
+	cc $(FLAGS) -I $(INC) $(OBJ) $(OBJ_DIR)/$(LIBFT) $(MLX) $(OBJ_DIR)/$(LIBMLX) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)

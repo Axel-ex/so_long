@@ -6,13 +6,29 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 13:54:49 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:05:08 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-//render sprites
+void	render_map(t_game *game)
+{
+	t_point	pos;
+
+	pos.y = 0;
+	while (pos.y < game->map->width)
+	{
+		pos.x = 0;
+		while (pos.x < game->map->length)
+		{
+			render_sprites(game, pos);
+			pos.x++;
+		}
+		pos.y++;
+	}
+}
+
 void	render_sprites(t_game *game, t_point p)
 {
 	t_sprite	sp;
@@ -31,20 +47,3 @@ void	render_sprites(t_game *game, t_point p)
 		sp.img, p.x * sp.width, p.y * sp.height);
 }
 
-//render map
-void	render_map(t_game *game)
-{
-	t_point	pos;
-
-	pos.y = 0;
-	while (pos.y < game->map->width)
-	{
-		pos.x = 0;
-		while (pos.x < game->map->length)
-		{
-			render_sprites(game, pos);
-			pos.x++;
-		}
-		pos.y++;
-	}
-}

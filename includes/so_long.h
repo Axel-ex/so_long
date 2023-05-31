@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 16:22:35 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:06:19 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,16 @@ int			check_walls(t_map *map);
 void		init_check(t_map *check);
 t_game		*game_init(t_map *map);
 void		graphic_init(t_game *game);
-
-//RENDER
 void		load_sprites(t_game *game);
 void		load_tiles(t_game *game);
 void		load_torches(t_game *game);
 void		load_player(t_game *game);
 void		load_exit_sprites(t_game *game);
 void		get_position(t_game *game);
+
+//RENDER
 void		render_map(t_game *game);
+void		render_sprites(t_game *game, t_point p);
 
 //EVENTS
 int			listen_key(int keycode, t_game *game);
