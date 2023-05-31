@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 17:51:04 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:57:51 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_game	*game_init(t_map *map)
 	load_sprites(game);
 	render_map(game);
 	mlx_hook(game->graph.mlx_win, 2, 1L << 0, listen_key, game);
-	//mlx_key_hook(render_frame);
 	mlx_loop(game->graph.mlx_ptr);
 	return (game);
 }

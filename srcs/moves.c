@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:33:13 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 20:14:32 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:51:36 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	move_player(t_game *game)
 	if (next_move(game) == EXIT)
 		move_exit(game);
 	game->moves++;
+	ft_printf("number of moves: %d\n", game->moves);
 }
 
 void	move_exit(t_game *game)

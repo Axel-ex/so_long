@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 17:05:08 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:50:38 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ void	render_sprites(t_game *game, t_point p)
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp.img, p.x * sp.width, p.y * sp.height);
 }
-
