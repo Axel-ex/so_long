@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 13:07:34 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:22:35 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ typedef struct s_player
 	t_sprite	*sp_back;
 	t_sprite	*sp_right;
 	t_sprite	*sp_left;
+	t_sprite	*sp_exit;
 	int			flag_pos;
+	int			flag_exit;
 }	t_player;
 
 typedef struct s_game
@@ -82,43 +84,48 @@ typedef struct s_game
 }	t_game;
 
 //MAP
-t_map	*get_map(char *str);
-void	get_dimension(t_map *map, char *str);
-void	matrix_generator(t_map *map, char *str);
-void	check_map(t_map *map);
+t_map		*get_map(char *str);
+void		get_dimension(t_map *map, char *str);
+void		matrix_generator(t_map *map, char *str);
+void		check_map(t_map *map);
 
 //CHECKS
-int		check_numb_items(t_map *map);
-int		check_ber(char *str);
-int		check_equal_line(t_map *map);
-int		check_accepted_char(t_map *map);
-int		check_walls(t_map *map);
+int			check_numb_items(t_map *map);
+int			check_ber(char *str);
+int			check_equal_line(t_map *map);
+int			check_accepted_char(t_map *map);
+int			check_walls(t_map *map);
 
 //INIT
-void	init_check(t_map *check);
-t_game	*game_init(t_map *map);
-void	graphic_init(t_game *game);
+void		init_check(t_map *check);
+t_game		*game_init(t_map *map);
+void		graphic_init(t_game *game);
 
 //RENDER
-void	load_sprites(t_game *game);
-void	load_tiles(t_game *game);
-void	load_torches(t_game *game);
-void	load_player(t_game *game);
-void	get_position(t_game *game);
-void	render_map(t_game *game);
+void		load_sprites(t_game *game);
+void		load_tiles(t_game *game);
+void		load_torches(t_game *game);
+void		load_player(t_game *game);
+void		load_exit_sprites(t_game *game);
+void		get_position(t_game *game);
+void		render_map(t_game *game);
 
 //EVENTS
-int		listen_key(int keycode, t_game *game);
+int			listen_key(int keycode, t_game *game);
+t_sprite	*sprite_match(t_game *game);
+void		move_player(t_game *game);
+char		next_move(t_game *game);
+void		move_exit(t_game *game);
 
 //CLOSE
-void	free_map_list(t_list *list_map, t_map *check);
-void	destroy_map(t_map *map);
-void	destroy_game(t_game *game);
-void	destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite);
-void	destroy_player(t_game *game);
-void	err_message(char *str, t_map *map);
+void		free_map_list(t_list *list_map, t_map *check);
+void		destroy_map(t_map *map);
+void		destroy_game(t_game *game);
+void		destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite);
+void		destroy_player(t_game *game);
+void		err_message(char *str, t_map *map);
 
 //UTILS
-int		close_game(int keycode, t_game *game);
+int			close_game(int keycode, t_game *game);
 
 #endif

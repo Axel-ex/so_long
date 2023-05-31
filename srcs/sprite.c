@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 13:15:53 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:38:23 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	load_tiles(t_game *game)
 	game->sp_tiles = malloc(sizeof(t_sprite) * 3);
 	if (!game->sp_tiles)
 		return ;
-	game->sp_tiles[G].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, GROUND,
+	game->sp_tiles[G].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, GR,
 			&(game->sp_tiles[G].width), &(game->sp_tiles[G].height));
-	game->sp_tiles[W].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, WALL,
+	game->sp_tiles[W].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, WA,
 			&(game->sp_tiles[W].width), &(game->sp_tiles[W].height));
-	game->sp_tiles[E].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, EXIT,
+	game->sp_tiles[E].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, EX,
 			&(game->sp_tiles[E].width), &(game->sp_tiles[E].height));
 }
 
@@ -61,26 +61,26 @@ void	load_player(t_game *game)
 	game->p->sp_left[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
 			PLAYER_LEFT1, &(game->p->sp_left[0].width),
 			&(game->p->sp_left[0].height));
+	load_exit_sprites(game);
 	get_position(game);
+	game->p->flag_exit = 0;
 }
 
-void	get_position(t_game *game)
+void	load_exit_sprites(t_game *game)
 {
-	t_point	pos;
-
-	pos = (t_point){0, 0};
-	while (pos.y < game->map->width)
-	{
-		pos.x = 0;
-		while (pos.x < game->map->length)
-		{
-			if (game->map->matrix[pos.y][pos.x] == 'P')
-			{
-				game->p->pos = pos;
-				return ;
-			}
-			pos.x++;
-		}
-		pos.y++;
-	}
+	game->p->sp_exit = calloc(4, sizeof(t_sprite));
+	if (!game->p->sp_exit)
+		return ;
+	game->p->sp_exit[FRONT].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PF_EXIT, &(game->p->sp_exit[FRONT].width),
+			&(game->p->sp_exit[FRONT].height));
+	game->p->sp_exit[BACK].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PB_EXIT, &(game->p->sp_exit[BACK].width),
+			&(game->p->sp_exit[BACK].height));
+	game->p->sp_exit[RIGHT].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PR_EXIT, &(game->p->sp_exit[RIGHT].width),
+			&(game->p->sp_exit[RIGHT].height));
+	game->p->sp_exit[LEFT].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PL_EXIT, &(game->p->sp_exit[LEFT].width),
+			&(game->p->sp_exit[LEFT].height));
 }

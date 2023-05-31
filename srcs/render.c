@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 13:08:12 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:54:49 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,17 @@ void	render_sprites(t_game *game, t_point p)
 //render map
 void	render_map(t_game *game)
 {
-	int	x;
-	int	y;
+	t_point	pos;
 
-	y = 0;
-	while (y < game->map->width)
+	pos.y = 0;
+	while (pos.y < game->map->width)
 	{
-		x = 0;
-		while (x < game->map->length)
+		pos.x = 0;
+		while (pos.x < game->map->length)
 		{
-			render_sprites(game, (t_point){x, y});
-			x++;
+			render_sprites(game, pos);
+			pos.x++;
 		}
-		y++;
+		pos.y++;
 	}
 }

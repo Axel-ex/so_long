@@ -1,7 +1,7 @@
 NAME	=	so_long
 
 SRC		=	srcs/main.c srcs/map.c srcs/checks.c srcs/init.c\
-			srcs/sprite.c srcs/render.c srcs/close.c srcs/events.c
+			srcs/sprite.c srcs/render.c srcs/close.c srcs/moves.c
 
 OBJ		=	$(SRC:.c=.o)
 

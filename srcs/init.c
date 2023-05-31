@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 12:08:25 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:53:13 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,25 @@ void	graphic_init(t_game *game)
 			45 * game->map->length, 45 * game->map->width, "so_long");
 	if (!game->graph.mlx_win)
 		ft_printf("mlx failed to init window");
+}
+
+void	get_position(t_game *game)
+{
+	t_point	pos;
+
+	pos = (t_point){0, 0};
+	while (pos.y < game->map->width)
+	{
+		pos.x = 0;
+		while (pos.x < game->map->length)
+		{
+			if (game->map->matrix[pos.y][pos.x] == 'P')
+			{
+				game->p->pos = pos;
+				return ;
+			}
+			pos.x++;
+		}
+		pos.y++;
+	}
 }
