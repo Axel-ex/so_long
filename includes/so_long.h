@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 17:06:19 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 10:51:47 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void		get_position(t_game *game);
 //RENDER
 void		render_map(t_game *game);
 void		render_sprites(t_game *game, t_point p);
+int			animate_torche(t_game *game);
 
 //EVENTS
 int			listen_key(int keycode, t_game *game);
@@ -124,7 +125,8 @@ void		destroy_map(t_map *map);
 void		destroy_game(t_game *game);
 void		destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite);
 void		destroy_player(t_game *game);
-void		err_message(char *str, t_map *map);
+void		err_checkmap(char *str, t_map *map);
+int			quit_window(t_game *game);
 
 //UTILS
 int			close_game(int keycode, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 22:56:15 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 10:36:19 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ void	destroy_player(t_game *game)
 	destroy_sprites(game, game->p->sp_back, 1);
 	destroy_sprites(game, game->p->sp_right, 1);
 	destroy_sprites(game, game->p->sp_left, 1);
+	destroy_sprites(game, game->p->sp_exit, 4);
 	free(game->p);
 }
 
-void	err_message(char *str, t_map *map)
+void	err_checkmap(char *str, t_map *map)
 {
-	ft_printf("%s", str);
+	ft_printf("Error\n%s", str);
 	destroy_map(map);
 	exit(0);
 }

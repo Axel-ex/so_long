@@ -1,11 +1,16 @@
 NAME	=	so_long
 
-SRC		=	srcs/main.c srcs/map.c srcs/checks.c srcs/init.c\
-			srcs/sprite.c srcs/render.c srcs/close.c srcs/moves.c
+SRC		=	main.c map.c checks.c init.c\
+			sprite.c render.c close.c moves.c\
+			utils.c
+
+SRC_DIR = srcs/
+
+OBJ_DIR	=	obj/
 
 OBJ		=	$(SRC:.c=.o)
 
-INC		=	includes/
+INC		=	../includes/
 
 FLAGS	=	-Wall -Wextra -Werror 
 
@@ -15,18 +20,16 @@ LIBMLX	=	libmlx.a
 
 MLX		=	-Lmlx -framework OpenGL -framework AppKit
 
-OBJ_DIR	=	obj
 
 
-%.o:%.c $(OBJ_DIR)
+%.o:$(SRC_DIR)%.c $(OBJ_DIR)
 	cc $(FLAGS) -c $< -o $(<:.c=.o)
 	mv srcs/*.o $(OBJ_DIR)
 	
 all: $(NAME)
 
 debug: $(OBJ) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
-	cd $(OBJ_DIR)
-	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)/$(LIBFT) $(MLX) $(OBJ_DIR)/$(LIBMLX) $(SRC) -o $(NAME)
+	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_DIR), $(SRC)) -o $(NAME)
 
 $(LIBFT): $(OBJ_DIR)
 	make -C Libft/
@@ -40,8 +43,7 @@ $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 
 $(NAME): $(OBJ) $(LIBFT) $(LIBMLX) $(OBJ_DIR)
-	cd $(OBJ_DIR)
-	cc $(FLAGS) -I $(INC) $(OBJ) $(OBJ_DIR)/$(LIBFT) $(MLX) $(OBJ_DIR)/$(LIBMLX) -o $(NAME)
+	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)

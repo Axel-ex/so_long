@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/31 16:38:23 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 09:24:06 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,25 @@ void	load_tiles(t_game *game)
 
 void	load_torches(t_game *game)
 {
-	game->sp_torches = ft_calloc(1, sizeof(t_sprite));
+	game->sp_torches = ft_calloc(6, sizeof(t_sprite));
 	game->sp_torches[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-			TORCHE1, &(game->sp_torches->width), &(game->sp_torches->height));
+			TORCHE1, &(game->sp_torches[0].width),
+			&(game->sp_torches[0].height));
+	game->sp_torches[1].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			TORCHE2, &(game->sp_torches[1].width),
+			&(game->sp_torches[1].height));
+	game->sp_torches[2].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			TORCHE3, &(game->sp_torches[2].width),
+			&(game->sp_torches[2].height));
+	game->sp_torches[3].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			TORCHE4, &(game->sp_torches[3].width),
+			&(game->sp_torches[3].height));
+	game->sp_torches[4].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			TORCHE5, &(game->sp_torches[4].width),
+			&(game->sp_torches[4].height));
+	game->sp_torches[5].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			TORCHE6, &(game->sp_torches[5].width),
+			&(game->sp_torches[5].height));
 }
 
 void	load_player(t_game *game)

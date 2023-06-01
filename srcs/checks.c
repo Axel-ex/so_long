@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:26:25 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/29 13:42:01 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 10:24:20 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	check_accepted_char(t_map *map)
 		j = 0;
 		while (map->matrix[i][j])
 		{
-			if (map->matrix[i][j] == '1' || map->matrix[i][j] == 'E'
-				|| map->matrix[i][j] == '0' || map->matrix[i][j] == 'P'
-				|| map->matrix[i][j] == 'C')
+			if (map->matrix[i][j] == WALL || map->matrix[i][j] == EXIT
+				|| map->matrix[i][j] == GROUND || map->matrix[i][j] == PLAYER
+				|| map->matrix[i][j] == TORCHE)
 				j++;
 			else
 				return (0);
@@ -72,11 +72,11 @@ int	check_numb_items(t_map *map)
 		j = 0;
 		while (map->matrix[i][j])
 		{
-			if (map->matrix[i][j] == 'P')
+			if (map->matrix[i][j] == PLAYER)
 				map->player++;
-			if (map->matrix[i][j] == 'C')
+			if (map->matrix[i][j] == TORCHE)
 				map->collect++;
-			if (map->matrix[i][j] == 'E')
+			if (map->matrix[i][j] == EXIT)
 				map->exit++;
 			j++;
 		}
@@ -98,9 +98,9 @@ int	check_walls(t_map *map)
 		j = 0;
 		while (map->matrix[i][j])
 		{
-			if ((i == 0 || i == map->width) && map->matrix[i][j] != '1')
+			if ((i == 0 || i == map->width) && map->matrix[i][j] != WALL)
 				return (0);
-			if ((j == 0 || j == map->length) && map->matrix[i][j] != '1')
+			if ((j == 0 || j == map->length) && map->matrix[i][j] != WALL)
 				return (0);
 			j++;
 		}
