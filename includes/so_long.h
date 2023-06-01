@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 10:51:47 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:31:52 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_map
 	int		player;
 	int		exit;
 	int		collect;
+	int		enemies;
 }	t_map;
 
 typedef struct t_point
@@ -79,6 +80,7 @@ typedef struct s_game
 	t_sprite		*sp_tiles;
 	t_sprite		*sp_torches;
 	t_player		*p;
+	t_player		**e;
 	int				torche;
 	int				moves;
 }	t_game;
@@ -130,5 +132,11 @@ int			quit_window(t_game *game);
 
 //UTILS
 int			close_game(int keycode, t_game *game);
+int			err_message(char *str, t_game *game);
+
+//ENNEMIES
+void		load_enemies(t_game *game);
+void		destroy_enemies(t_game *game);
+t_point		get_enemie_pos(t_game *game);
 
 #endif

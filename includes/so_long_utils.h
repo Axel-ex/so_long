@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 10:15:49 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:03:54 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 # define TORCHE 'C'
+# define ENEMIES 'Z'
 
 # define WA "assets/tiles/45x45/Wall.xpm"
 # define GR "assets/tiles/45x45/Ground.xpm"
@@ -44,6 +45,11 @@
 # define PB_EXIT "assets/tiles/45x45/player_back_exit.xpm"
 # define PR_EXIT "assets/tiles/45x45/player_right_exit.xpm"
 # define PL_EXIT "assets/tiles/45x45/player_left_exit.xpm"
+
+# define ZOMBIE_FRONT "assets/tiles/45x45/zombie_front.xpm"
+# define ZOMBIE_BACK "assets/tiles/45x45/zombie_back.xpm"
+# define ZOMBIE_RIGHT "assets/tiles/45x45/zombie_right.xpm"
+# define ZOMBIE_LEFT "assets/tiles/45x45/zombie_left.xpm"
 
 # ifdef MACOS
 

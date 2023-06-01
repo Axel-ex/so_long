@@ -1,35 +1,42 @@
-NAME	=	so_long
+NAME		=	so_long
 
-SRC		=	main.c map.c checks.c init.c\
+SRC			=	main.c map.c checks.c init.c\
 			sprite.c render.c close.c moves.c\
 			utils.c
 
-SRC_DIR = srcs/
+SRC_BONUS	=	main_bonus.c map_bonus.c checks_bonus.c init_bonus.c\
+			sprite_bonus.c render_bonus.c close_bonus.c moves_bonus.c\
+			utils_bonus.c load_zombies_bonus.c move_zombies_bonus.c
 
-OBJ_DIR	=	obj/
+SRC_DIR 	= srcs/
 
-OBJ		=	$(SRC:.c=.o)
+SRC_BONUS_DIR = srcs_bonus/
 
-INC		=	../includes/
+OBJ_DIR		=	obj/
 
-FLAGS	=	-Wall -Wextra -Werror 
+OBJ			=	$(SRC:.c=.o)
 
-LIBFT	=	libft.a
+OBJ_BONUS 	=	$(SRC_BONUS:.c=.o)
 
-LIBMLX	=	libmlx.a
+INC			=	../includes/
 
-MLX		=	-Lmlx -framework OpenGL -framework AppKit
+FLAGS		=	-Wall -Wextra -Werror 
+
+LIBFT		=	libft.a
+
+LIBMLX		=	libmlx.a
+
+MLX			=	-Lmlx -framework OpenGL -framework AppKit
 
 
 
 %.o:$(SRC_DIR)%.c $(OBJ_DIR)
 	cc $(FLAGS) -c $< -o $(<:.c=.o)
-	mv srcs/*.o $(OBJ_DIR)
-	
-all: $(NAME)
+	mv $(SRC_DIR)*.o $(OBJ_DIR)
 
-debug: $(OBJ) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
-	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_DIR), $(SRC)) -o $(NAME)
+%.o:$(SRC_BONUS_DIR)%.c $(OBJ_DIR)
+	cc $(FLAGS) -c $< -o $(<:.c=.o)
+	mv $(SRC_BONUS_DIR)*.o $(OBJ_DIR)
 
 $(LIBFT): $(OBJ_DIR)
 	make -C Libft/
@@ -42,8 +49,19 @@ $(LIBMLX): $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 
+all: $(NAME)
+
+debug: $(OBJ) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
+	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_DIR), $(SRC)) -o $(NAME)
+
+debugbonus: $(OBJ_BONUS) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
+	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_BONUS_DIR), $(SRC_BONUS)) -o $(NAME)
+
 $(NAME): $(OBJ) $(LIBFT) $(LIBMLX) $(OBJ_DIR)
 	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) -o $(NAME)
+
+bonus: $(OBJ_BONUS) $(LIBFT) $(LIBMLX) $(OBJ_DIR)
+	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ_BONUS)) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   close_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 11:38:50 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:53:09 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	destroy_game(t_game *game)
 		destroy_map(game->map);
 	if (game->p)
 		destroy_player(game);
+	if (game->e)
+		destroy_enemies(game);
 	free(game);
 	exit(0);
 }

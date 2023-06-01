@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 11:55:24 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:02:11 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	animate_torche(t_game *game)
 		}
 		pos.y++;
 	}
+	usleep(500);
 	i++;
 	return (i);
 }
@@ -71,6 +72,8 @@ void	render_sprites(t_game *game, t_point p)
 		sp = game->sp_torches[0];
 	if (game->map->matrix[p.y][p.x] == PLAYER)
 		sp = game->p->sp_front[0];
+	if (game->map->matrix[p.y][p.x] == ENEMIES)
+		sp = game->e[0]->sp_front[0];
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp.img, p.x * sp.width, p.y * sp.height);
 }
