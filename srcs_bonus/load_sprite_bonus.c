@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_bonus.c                                     :+:      :+:    :+:   */
+/*   load_sprite_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 10:24:06 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 14:29:14 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	load_sprites(t_game *game)
 
 void	load_tiles(t_game *game)
 {
-	game->sp_tiles = malloc(sizeof(t_sprite) * 3);
+	game->sp_tiles = ft_calloc(3, sizeof(t_sprite));
 	if (!game->sp_tiles)
 		return ;
 	game->sp_tiles[G].img = mlx_xpm_file_to_image(game->graph.mlx_ptr, GR,
@@ -59,10 +59,10 @@ void	load_torches(t_game *game)
 
 void	load_player(t_game *game)
 {
-	game->p = calloc(1, sizeof(t_player));
+	game->p = ft_calloc(1, sizeof(t_player));
 	if (!game->p)
 		return ;
-	game->p->sp_front = ft_calloc(5, sizeof(t_sprite));
+	game->p->sp_front = ft_calloc(1, sizeof(t_sprite));
 	game->p->sp_back = ft_calloc(1, sizeof(t_sprite));
 	game->p->sp_right = ft_calloc(1, sizeof(t_sprite));
 	game->p->sp_left = ft_calloc(1, sizeof(t_sprite));
@@ -87,7 +87,7 @@ void	load_player(t_game *game)
 
 void	load_exit_sprites(t_game *game)
 {
-	game->p->sp_exit = calloc(4, sizeof(t_sprite));
+	game->p->sp_exit = ft_calloc(4, sizeof(t_sprite));
 	if (!game->p->sp_exit)
 		return ;
 	game->p->sp_exit[FRONT].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,

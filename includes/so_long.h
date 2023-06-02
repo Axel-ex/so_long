@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 10:24:31 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:54:16 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_player
 	t_sprite	*sp_right;
 	t_sprite	*sp_left;
 	t_sprite	*sp_exit;
+	t_sprite	*anim_dead;
 	int			flag_pos;
 	int			flag_exit;
 	int			moves;
@@ -100,46 +101,49 @@ int			check_walls(t_map *map);
 
 //INIT
 void		init_check(t_map *check);
-t_game		*game_init(t_map *map);
+void		game_init(t_map *map);
 void		graphic_init(t_game *game);
+void		get_position(t_game *game);
+
+//SPRITES
 void		load_sprites(t_game *game);
 void		load_tiles(t_game *game);
 void		load_torches(t_game *game);
 void		load_player(t_game *game);
 void		load_exit_sprites(t_game *game);
-void		get_position(t_game *game);
-void		load_death_anim(t_game *game);
 
 //RENDER
 void		render_map(t_game *game);
 void		render_sprites(t_game *game, t_point p);
 void		render_zombies(t_game *game, int i);
+void		display_move(t_game *game);
+int			render_frame(t_game *game);
 
-//ANIMATE
+//ANIMATION
+void		load_death_anim(t_game *game);
 int			animate_torche(t_game *game);
 void		animate_death(t_game *game);
 
-//EVENTS
+//MOVES
 int			listen_key(int keycode, t_game *game);
+char		next_move(t_game *game);
 t_sprite	*sprite_match(t_game *game);
 void		move_player(t_game *game);
-char		next_move(t_game *game);
 void		move_exit(t_game *game);
 
 //CLOSE
-void		free_map_list(t_list *list_map, t_map *check);
-void		destroy_map(t_map *map);
 void		destroy_game(t_game *game);
+void		destroy_map(t_map *map);
 void		destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite);
 void		destroy_player(t_game *game);
 void		err_checkmap(char *str, t_map *map);
-int			quit_window(t_game *game);
 
 //UTILS
-int			close_game(int keycode, t_game *game);
+int			quit_window(t_game *game);
 int			err_message(char *str, t_game *game);
 
-//ENNEMIES
+//BONUS
+//Load zombies
 void		load_enemies(t_game *game);
 void		destroy_enemies(t_game *game);
 void		get_enemie_pos(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 09:24:16 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:49:11 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_check(t_map *map)
 	map->collect = 0;
 }
 
-t_game	*game_init(t_map *map)
+void	game_init(t_map *map)
 {
 	t_game	*game;
 
@@ -36,9 +36,8 @@ t_game	*game_init(t_map *map)
 	render_map(game);
 	mlx_hook(game->graph.mlx_win, ON_KEYPRESS, KEYPRESS_MASK, listen_key, game);
 	mlx_hook(game->graph.mlx_win, ON_DESTROY, DESTROY_MASK, quit_window, game);
-	mlx_loop_hook(game->graph.mlx_ptr, move_zombies, game);
+	mlx_loop_hook(game->graph.mlx_ptr, render_frame, game);
 	mlx_loop(game->graph.mlx_ptr);
-	return (game);
 }
 
 //Need to exit with a free on game

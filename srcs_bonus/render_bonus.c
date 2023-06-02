@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 09:51:57 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:23:57 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,30 @@ void	render_zombies(t_game *game, int i)
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp.img, game->e[i]->next_pos.x * sp.width,
 		game->e[i]->next_pos.y * sp.height);
+}
+
+//need black square to be able to erase previous moves
+void	display_move(t_game *game)
+{
+	char	*str;
+	char	*str2;
+
+	str = ft_itoa(game->p->moves);
+	str2 = ft_itoa(game->p->moves - 1);
+	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
+		45, 11 * 47, 0xffffff, "Number of moves:");
+	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
+		4 * 45, 11 * 47, 0xFFFFFF, str);
+	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
+		4 * 45, 11 * 47, 0x000000, str2);
+	free(str);
+	free(str2);
+}
+
+int	render_frame(t_game *game)
+{
+	animate_torche(game);
+	move_zombies(game);
+	display_move(game);
+	return (0);
 }

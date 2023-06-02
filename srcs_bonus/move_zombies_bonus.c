@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 10:55:30 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:38:17 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,9 @@ int	move_zombies(t_game *game)
 	int	i;
 	int	freq_move;
 
-	animate_torche(game);
 	freq_move = 45;
 	if (game->torche == game->map->collect)
-		freq_move = 150;
+		freq_move = 30;
 	i = 0;
 	while (i < game->map->enemies)
 	{

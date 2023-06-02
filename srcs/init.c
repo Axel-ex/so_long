@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 10:52:18 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:56:39 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_check(t_map *map)
 	map->collect = 0;
 }
 
-t_game	*game_init(t_map *map)
+void	game_init(t_map *map)
 {
 	t_game	*game;
 
@@ -31,15 +31,14 @@ t_game	*game_init(t_map *map)
 		err_checkmap("failed to allocate memory for the game", map);
 	game->map = map;
 	game->torche = 0;
-	game->moves = 0;
 	graphic_init(game);
 	load_sprites(game);
+	game->p->moves = 0;
 	render_map(game);
 	mlx_hook(game->graph.mlx_win, ON_KEYPRESS, KEYPRESS_MASK, listen_key, game);
 	mlx_hook(game->graph.mlx_win, ON_DESTROY, DESTROY_MASK, quit_window, game);
 	mlx_loop_hook(game->graph.mlx_ptr, animate_torche, game);
 	mlx_loop(game->graph.mlx_ptr);
-	return (game);
 }
 
 //Need to exit with a free on game
