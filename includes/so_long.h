@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 09:20:43 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 09:36:42 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void		get_position(t_game *game);
 void		render_map(t_game *game);
 void		render_sprites(t_game *game, t_point p);
 int			animate_torche(t_game *game);
+void		render_zombies(t_game *game, int i);
 
 //EVENTS
 int			listen_key(int keycode, t_game *game);

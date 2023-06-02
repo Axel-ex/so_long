@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 09:28:09 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 09:43:18 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	move_zombies(t_game *game)
 			game->map->matrix[game->e[i]->next_pos.y]
 			[game->e[i]->next_pos.x] = ENEMIES;
 			render_sprites(game, game->e[i]->pos);
-			render_sprites(game, game->e[i]->next_pos);
+			render_zombies(game, i);
 			game->e[i]->pos = game->e[i]->next_pos;
 		}
 		i++;

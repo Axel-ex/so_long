@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 22:41:23 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 09:42:41 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ void	render_sprites(t_game *game, t_point p)
 		sp = game->e[0]->sp_front[0];
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp.img, p.x * sp.width, p.y * sp.height);
+}
+
+void	render_zombies(t_game *game, int i)
+{
+	t_sprite	sp;
+
+	if (game->e[i]->flag_pos == FRONT)
+		sp = game->e[i]->sp_front[0];
+	if (game->e[i]->flag_pos == BACK)
+		sp = game->e[i]->sp_back[0];
+	if (game->e[i]->flag_pos == RIGHT)
+		sp = game->e[i]->sp_right[0];
+	if (game->e[i]->flag_pos == LEFT)
+		sp = game->e[i]->sp_left[0];
+	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
+		sp.img, game->e[i]->next_pos.x * sp.width,
+		game->e[i]->next_pos.y * sp.height);
 }
