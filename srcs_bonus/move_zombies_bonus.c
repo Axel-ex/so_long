@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_destroy_zombies_bonus.c                       :+:      :+:    :+:   */
+/*   move_zombies_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 12:58:02 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 09:28:09 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,75 @@ void	destroy_enemies(t_game *game)
 		free(game->e[i]);
 	}
 	free(game->e);
+}
+
+char	next_move_zombie(t_game *game, int i)
+{
+	if (game->map->matrix[game->e[i]->next_pos.y][game->e[i]->next_pos.x]
+		== WALL)
+		return (WALL);
+	if (game->map->matrix[game->e[i]->next_pos.y][game->e[i]->next_pos.x]
+		== EXIT)
+		return (EXIT);
+	if (game->map->matrix[game->e[i]->next_pos.y][game->e[i]->next_pos.x]
+		== TORCHE)
+		return (TORCHE);
+	return (GROUND);
+}
+
+/*randomly select next_pos */
+void	pick_move(t_game *game, int i)
+{
+	int		random;
+	t_point	pos;
+
+	random = rand() % 4 + 0;
+	if (random == 0)
+	{
+		pos = (t_point){game->e[i]->pos.x, game->e[i]->pos.y + 1};
+		game->e[i]->flag_pos = FRONT;
+	}
+	if (random == 1)
+	{
+		pos = (t_point){game->e[i]->pos.x, game->e[i]->pos.y - 1};
+		game->e[i]->flag_pos = BACK;
+	}
+	if (random == 2)
+	{
+		pos = (t_point){game->e[i]->pos.x + 1, game->e[i]->pos.y};
+		game->e[i]->flag_pos = RIGHT;
+	}
+	if (random == 3)
+	{
+		pos = (t_point){game->e[i]->pos.x - 1, game->e[i]->pos.y};
+		game->e[i]->flag_pos = LEFT;
+	}
+	game->e[i]->next_pos = pos;
+}
+
+int	move_zombies(t_game *game)
+{
+	int	i;
+
+	animate_torche(game);
+	i = 0;
+	while (i < game->map->enemies)
+	{
+		pick_move(game, i);
+		if (next_move_zombie(game, i) == GROUND
+			&& game->e[0]->moves % FREQ_MOVE == 0)
+		{
+			game->map->matrix[game->e[i]->pos.y]
+			[game->e[i]->pos.x] = GROUND;
+			game->map->matrix[game->e[i]->next_pos.y]
+			[game->e[i]->next_pos.x] = ENEMIES;
+			render_sprites(game, game->e[i]->pos);
+			render_sprites(game, game->e[i]->next_pos);
+			game->e[i]->pos = game->e[i]->next_pos;
+		}
+		i++;
+	}
+	game->e[0]->moves++;
+	usleep(5000);
+	return (i);
 }

@@ -38,6 +38,8 @@ MLX			=	-Lmlx -framework OpenGL -framework AppKit
 	cc $(FLAGS) -c $< -o $(<:.c=.o)
 	mv $(SRC_BONUS_DIR)*.o $(OBJ_DIR)
 
+all: $(NAME)
+
 $(LIBFT): $(OBJ_DIR)
 	make -C Libft/
 	mv Libft/$(LIBFT) $(OBJ_DIR)
@@ -49,7 +51,6 @@ $(LIBMLX): $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 
-all: $(NAME)
 
 debug: $(OBJ) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
 	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_DIR), $(SRC)) -o $(NAME)

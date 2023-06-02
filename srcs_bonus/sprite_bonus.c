@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 13:30:25 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 09:24:51 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	load_player(t_game *game)
 	load_exit_sprites(game);
 	get_position(game);
 	game->p->flag_exit = 0;
+	game->p->moves = 0;
 }
 
 void	load_exit_sprites(t_game *game)

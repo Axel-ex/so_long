@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:43:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 13:37:04 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 09:22:33 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static void	alloc_enemies(t_game *game, int i)
 		err_message("failed to allocate zombie sprites", game);
 }
 
-t_point	get_enemie_pos(t_game *game)
+void	get_enemie_pos(t_game *game)
 {
-	static t_point	pos;
+	t_point	pos;
+	int		i;
 
+	i = 0;
 	pos.y = 0;
 	while (pos.y < game->map->width)
 	{
@@ -38,17 +40,21 @@ t_point	get_enemie_pos(t_game *game)
 		while (pos.x < game->map->length)
 		{
 			if (game->map->matrix[pos.y][pos.x] == ENEMIES)
-				return (pos);
+			{
+				game->e[i]->pos = pos;
+				i++;
+				break ;
+			}
 			pos.x++;
 		}
 		pos.y++;
 	}
-	return (pos);
 }
 
+/* not useful considering I'll use only one set of zombie sprite. */
 void	load_enemies(t_game *game)
 {
-	int			i;
+	int	i;
 
 	game->e = (t_player **)malloc(sizeof(t_player *) * game->map->enemies);
 	if (!game->e)
@@ -69,7 +75,8 @@ void	load_enemies(t_game *game)
 		game->e[i]->sp_left[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
 				ZOMBIE_LEFT, &(game->e[i]->sp_left[0].width),
 				&(game->e[i]->sp_left[0].height));
-		game->e[i]->pos = get_enemie_pos(game);
+		game->e[i]->moves = 0;
 		i++;
 	}
+	get_enemie_pos(game);
 }
