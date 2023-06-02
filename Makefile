@@ -5,8 +5,9 @@ SRC			=	main.c map.c checks.c init.c\
 			utils.c
 
 SRC_BONUS	=	main_bonus.c map_bonus.c checks_bonus.c init_bonus.c\
-			sprite_bonus.c render_bonus.c close_bonus.c moves_bonus.c\
-			utils_bonus.c load_zombies_bonus.c move_zombies_bonus.c
+			load_sprite_bonus.c render_bonus.c close_bonus.c moves_bonus.c\
+			utils_bonus.c load_zombies_bonus.c move_zombies_bonus.c\
+			animations.c load_animations.c
 
 SRC_DIR 	= srcs/
 

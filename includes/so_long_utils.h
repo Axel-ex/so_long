@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 09:29:15 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/02 10:49:27 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@
 # define ZOMBIE_RIGHT "assets/tiles/45x45/zombie_right.xpm"
 # define ZOMBIE_LEFT "assets/tiles/45x45/zombie_left.xpm"
 
+# define FRONT_DEATH1 "assets/tiles/45x45/anim/front_death1.xpm"
+# define FRONT_DEATH2 "assets/tiles/45x45/anim/front_death2.xpm"
+# define FRONT_DEATH3 "assets/tiles/45x45/anim/front_death3.xpm"
+# define FRONT_DEATH4 "assets/tiles/45x45/anim/front_death4.xpm"
+
 # ifdef MACOS
 
 #  define KEY_UP	126
@@ -61,7 +66,6 @@
 
 # endif
 
-# define FREQ_MOVE	15
 
 typedef enum e_keys
 {
