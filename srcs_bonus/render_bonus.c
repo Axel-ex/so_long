@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 15:23:57 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/04 10:25:56 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ void	display_move(t_game *game)
 	str = ft_itoa(game->p->moves);
 	str2 = ft_itoa(game->p->moves - 1);
 	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
-		45, 11 * 47, 0xffffff, "Number of moves:");
+		45, 11 * 51, 0xffffff, "Number of moves:");
 	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
-		4 * 45, 11 * 47, 0xFFFFFF, str);
+		4 * 45, 11 * 51, 0xFFFFFF, str);
 	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
-		4 * 45, 11 * 47, 0x000000, str2);
+		4 * 45, 11 * 51, 0x000000, str2);
 	free(str);
 	free(str2);
 }

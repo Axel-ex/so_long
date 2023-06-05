@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 15:54:16 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:42:57 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,15 @@ void		display_move(t_game *game);
 int			render_frame(t_game *game);
 
 //ANIMATION
-void		load_death_anim(t_game *game);
 int			animate_torche(t_game *game);
 void		animate_death(t_game *game);
+void		animate_out(t_game *game);
+void		animate_in(t_game *game);
+
+//LOAD_ANIM
+void		load_death_anim(t_game *game);
+void		load_anim_out(t_game *game);
+void		load_anim_in(t_game *game);
 
 //MOVES
 int			listen_key(int keycode, t_game *game);
@@ -141,6 +147,7 @@ void		err_checkmap(char *str, t_map *map);
 //UTILS
 int			quit_window(t_game *game);
 int			err_message(char *str, t_game *game);
+void		put_image(t_game *game, t_sprite *sp, t_point pos);
 
 //BONUS
 //Load zombies

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:33:13 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 14:51:36 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:49:31 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void	move_player(t_game *game)
 		prev = game->sp_tiles[E];
 	if (!next_move(game))
 	{
-		mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-			sp->img, game->p->next_pos.x * sp->width,
-			game->p->next_pos.y * sp->height);
-		mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-			prev.img, game->p->pos.x * prev.width,
-			game->p->pos.y * prev.height);
+		put_image(game, &(prev), game->p->pos);
+		animate_out(game);
+		put_image(game, &(prev), game->p->pos);
+		animate_in(game);
+		put_image(game, &(prev), game->p->next_pos);
+		put_image(game, sp, game->p->next_pos);
 		game->p->pos = game->p->next_pos;
 	}
 	if (next_move(game) == EXIT)

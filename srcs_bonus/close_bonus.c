@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 12:53:09 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:53:33 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,32 @@ void	destroy_game(t_game *game)
 		destroy_enemies(game);
 	free(game);
 	exit(0);
+}
+
+void	destroy_enemies(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->map->enemies)
+	{
+		destroy_sprites(game, game->e[i]->sp_front, 1);
+		destroy_sprites(game, game->e[i]->sp_back, 1);
+		destroy_sprites(game, game->e[i]->sp_right, 1);
+		destroy_sprites(game, game->e[i]->sp_left, 1);
+		free(game->e[i]);
+	}
+	free(game->e);
+}
+
+void	destroy_player(t_game *game)
+{
+	destroy_sprites(game, game->p->sp_front, 3);
+	destroy_sprites(game, game->p->sp_back, 3);
+	destroy_sprites(game, game->p->sp_right, 3);
+	destroy_sprites(game, game->p->sp_left, 3);
+	destroy_sprites(game, game->p->sp_exit, 4);
+	free(game->p);
 }
 
 void	destroy_map(t_map *map)
@@ -62,21 +88,4 @@ void	destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite)
 		i++;
 	}
 	free(sprite);
-}
-
-void	destroy_player(t_game *game)
-{
-	destroy_sprites(game, game->p->sp_front, 1);
-	destroy_sprites(game, game->p->sp_back, 1);
-	destroy_sprites(game, game->p->sp_right, 1);
-	destroy_sprites(game, game->p->sp_left, 1);
-	destroy_sprites(game, game->p->sp_exit, 4);
-	free(game->p);
-}
-
-void	err_checkmap(char *str, t_map *map)
-{
-	ft_printf("Error\n%s", str);
-	destroy_map(map);
-	exit(0);
 }

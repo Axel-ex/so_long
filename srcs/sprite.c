@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 14:27:51 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/04 10:20:59 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	load_sprites(t_game *game)
 	load_tiles(game);
 	load_torches(game);
 	load_player(game);
+	load_exit_sprites(game);
 }
 
 void	load_tiles(t_game *game)
@@ -77,7 +78,6 @@ void	load_player(t_game *game)
 	game->p->sp_left[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
 			PLAYER_LEFT1, &(game->p->sp_left[0].width),
 			&(game->p->sp_left[0].height));
-	load_exit_sprites(game);
 	get_position(game);
 	game->p->flag_exit = 0;
 }

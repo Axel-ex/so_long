@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:43:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/02 09:22:33 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/03 14:12:11 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	get_enemie_pos(t_game *game)
 	}
 }
 
-/* not useful considering I'll use only one set of zombie sprite. */
 void	load_enemies(t_game *game)
 {
 	int	i;
@@ -63,18 +62,18 @@ void	load_enemies(t_game *game)
 	while (i < game->map->enemies)
 	{
 		alloc_enemies(game, i);
-		game->e[i]->sp_front[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-				ZOMBIE_FRONT, &(game->e[i]->sp_front[0].width),
-				&(game->e[i]->sp_front[0].height));
-		game->e[i]->sp_back[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-				ZOMBIE_BACK, &(game->e[i]->sp_back[0].width),
-				&(game->e[i]->sp_back[0].height));
-		game->e[i]->sp_right[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-				ZOMBIE_RIGHT, &(game->e[i]->sp_right[0].width),
-				&(game->e[i]->sp_right[0].height));
-		game->e[i]->sp_left[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-				ZOMBIE_LEFT, &(game->e[i]->sp_left[0].width),
-				&(game->e[i]->sp_left[0].height));
+		game->e[i]->sp_front->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+				ZOMBIE_FRONT, &(game->e[i]->sp_front->width),
+				&(game->e[i]->sp_front->height));
+		game->e[i]->sp_back->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+				ZOMBIE_BACK, &(game->e[i]->sp_back->width),
+				&(game->e[i]->sp_back->height));
+		game->e[i]->sp_right->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+				ZOMBIE_RIGHT, &(game->e[i]->sp_right->width),
+				&(game->e[i]->sp_right->height));
+		game->e[i]->sp_left->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+				ZOMBIE_LEFT, &(game->e[i]->sp_left->width),
+				&(game->e[i]->sp_left->height));
 		game->e[i]->moves = 0;
 		i++;
 	}
