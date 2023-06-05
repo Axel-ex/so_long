@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/04 10:25:56 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:22:11 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	render_zombies(t_game *game, int i)
 		game->e[i]->next_pos.y * sp.height);
 }
 
-//need black square to be able to erase previous moves
 void	display_move(t_game *game)
 {
 	char	*str;
@@ -77,9 +76,9 @@ void	display_move(t_game *game)
 	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
 		45, 11 * 51, 0xffffff, "Number of moves:");
 	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
-		4 * 45, 11 * 51, 0xFFFFFF, str);
-	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
 		4 * 45, 11 * 51, 0x000000, str2);
+	mlx_string_put(game->graph.mlx_ptr, game->graph.mlx_win,
+		4 * 45, 11 * 51, 0xFFFFFF, str);
 	free(str);
 	free(str2);
 }

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:33:13 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 13:49:31 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:22:46 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	move_player(t_game *game)
 	if (next_move(game) == EXIT)
 		move_exit(game);
 	game->p->moves++;
-	ft_printf("number of moves: %d\n", game->p->moves);
 }
 
 void	move_exit(t_game *game)
@@ -108,12 +107,8 @@ void	move_exit(t_game *game)
 		sp = game->p->sp_exit[RIGHT];
 	if (game->p->flag_pos == LEFT)
 		sp = game->p->sp_exit[LEFT];
-	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-		sp.img, game->p->next_pos.x * sp.width,
-		game->p->next_pos.y * sp.height);
-	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-		game->sp_tiles[G].img, game->sp_tiles[G].width * game->p->pos.x,
-		game->sp_tiles[G].height * game->p->pos.y);
+	put_image(game, &(sp), game->p->next_pos);
+	put_image(game, &(game->sp_tiles[G]), game->p->pos);
 	game->p->pos = game->p->next_pos;
 	game->p->flag_exit = 1;
 	if (game->torche == game->map->collect)

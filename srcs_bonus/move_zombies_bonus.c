@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 11:55:29 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:18:07 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ char	next_move_zombie(t_game *game, int i)
 	if (game->map->matrix[game->e[i]->next_pos.y][game->e[i]->next_pos.x]
 		== TORCHE)
 		return (TORCHE);
+	if (game->map->matrix[game->e[i]->next_pos.y][game->e[i]->next_pos.x]
+		== ENEMIES)
+		return (ENEMIES);
 	if (game->e[i]->next_pos.x == game->p->pos.x
 		&& game->e[i]->next_pos.y == game->p->pos.y)
 	{
@@ -32,7 +35,6 @@ char	next_move_zombie(t_game *game, int i)
 	return (GROUND);
 }
 
-/*randomly select next_pos */
 void	pick_move(t_game *game, int i)
 {
 	int		random;

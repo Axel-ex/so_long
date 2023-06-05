@@ -21,7 +21,7 @@ OBJ_BONUS 	=	$(SRC_BONUS:.c=.o)
 
 INC			=	../includes/
 
-FLAGS		=	-Wall -Wextra -Werror 
+FLAGS		=	-Wall -Wextra -Werror
 
 LIBFT		=	libft.a
 

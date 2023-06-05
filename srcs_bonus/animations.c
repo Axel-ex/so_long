@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:51:08 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 13:46:25 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:05:39 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	animate_out(t_game *game)
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp[1].img, sp[1].width * game->p->pos.x,
 		sp[1].height * game->p->pos.y);
-	usleep(1000);
+	usleep(10000);
 }
 
 void	animate_in(t_game *game)
@@ -90,5 +90,5 @@ void	animate_in(t_game *game)
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp[2].img, sp[2].width * game->p->next_pos.x,
 		sp[2].height * game->p->next_pos.y);
-	usleep(1000);
+	usleep(10000);
 }
