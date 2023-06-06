@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/04 10:20:59 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:44:32 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	load_player(t_game *game)
 	game->p->sp_left[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
 			PLAYER_LEFT1, &(game->p->sp_left[0].width),
 			&(game->p->sp_left[0].height));
-	get_position(game);
+	game->p->pos = get_position(game->map);
 	game->p->flag_exit = 0;
 }
 

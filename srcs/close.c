@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 11:38:50 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:50:11 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,21 @@ void	destroy_game(t_game *game)
 
 void	destroy_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
 	if (!map)
 		return ;
 	if (map->matrix)
-	{
-		while (i < map->width)
-			free(map->matrix[i++]);
-		free(map->matrix);
-	}
+		destroy_matrix(map, map->matrix);
 	free(map);
+}
+
+void	destroy_matrix(t_map *map, char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->width)
+		free(matrix[i++]);
+	free(matrix);
 }
 
 void	destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite)
@@ -70,11 +73,4 @@ void	destroy_player(t_game *game)
 	destroy_sprites(game, game->p->sp_left, 1);
 	destroy_sprites(game, game->p->sp_exit, 4);
 	free(game->p);
-}
-
-void	err_checkmap(char *str, t_map *map)
-{
-	ft_printf("Error\n%s", str);
-	destroy_map(map);
-	exit(0);
 }

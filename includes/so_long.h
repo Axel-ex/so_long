@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 13:42:57 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:12:14 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 
 typedef struct s_mlx
 {
@@ -91,6 +92,7 @@ t_map		*get_map(char *str);
 void		get_dimension(t_map *map, char *str);
 void		matrix_generator(t_map *map, char *str);
 void		check_map(t_map *map);
+bool		check_valid_path(t_map *map);
 
 //CHECKS
 int			check_numb_items(t_map *map);
@@ -103,7 +105,6 @@ int			check_walls(t_map *map);
 void		init_check(t_map *check);
 void		game_init(t_map *map);
 void		graphic_init(t_game *game);
-void		get_position(t_game *game);
 
 //SPRITES
 void		load_sprites(t_game *game);
@@ -140,14 +141,17 @@ void		move_exit(t_game *game);
 //CLOSE
 void		destroy_game(t_game *game);
 void		destroy_map(t_map *map);
+void		destroy_matrix(t_map *map, char **matrix);
 void		destroy_sprites(t_game *game, t_sprite *sprite, int nb_sprite);
 void		destroy_player(t_game *game);
-void		err_checkmap(char *str, t_map *map);
 
 //UTILS
 int			quit_window(t_game *game);
+bool		flood_fill(t_map *map, char **matrix, t_point pos);
 int			err_message(char *str, t_game *game);
 void		put_image(t_game *game, t_sprite *sp, t_point pos);
+t_point		get_position(t_map *map);
+void		err_checkmap(char *str, t_map *map);
 
 //BONUS
 //Load zombies
