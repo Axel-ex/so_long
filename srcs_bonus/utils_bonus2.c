@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 10:49:24 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 11:13:28 by axelchab         ###   ########.fr       */
+/*   Created: 2023/06/07 13:33:59 by axelchab          #+#    #+#             */
+/*   Updated: 2023/06/07 13:34:31 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	quit_window(t_game *game)
-{
-	destroy_game(game);
-	exit(0);
-}
 
 bool	flood_fill(t_map *map, char **matrix, t_point pos)
 {
@@ -35,30 +29,4 @@ bool	flood_fill(t_map *map, char **matrix, t_point pos)
 	flood_fill(map, matrix, (t_point){pos.x, pos.y + 1});
 	flood_fill(map, matrix, (t_point){pos.x, pos.y - 1});
 	return (torches == map->collect && found_exit);
-}
-
-t_point	get_position(t_map *map)
-{
-	t_point	pos;
-
-	pos = (t_point){0, 0};
-	while (pos.y < map->width)
-	{
-		pos.x = 0;
-		while (pos.x < map->length)
-		{
-			if (map->matrix[pos.y][pos.x] == PLAYER)
-				return (pos);
-			pos.x++;
-		}
-		pos.y++;
-	}
-	return (pos);
-}
-
-void	err_checkmap(char *str, t_map *map)
-{
-	ft_printf("Error\n%s", str);
-	destroy_map(map);
-	exit(0);
 }

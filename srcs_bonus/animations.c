@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:51:08 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 14:05:39 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:32:58 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,11 @@ void	animate_in(t_game *game)
 		sp[2].img, sp[2].width * game->p->next_pos.x,
 		sp[2].height * game->p->next_pos.y);
 	usleep(10000);
+}
+
+void	put_image(t_game *game, t_sprite *sp, t_point pos)
+{
+	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
+		sp->img, pos.x * sp->width,
+		pos.y * sp->height);
 }

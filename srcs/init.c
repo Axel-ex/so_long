@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/06 15:41:19 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:15:58 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,13 @@ void	game_init(t_map *map)
 	mlx_loop(game->graph.mlx_ptr);
 }
 
-//Need to exit with a free on game
 void	graphic_init(t_game *game)
 {
 	game->graph.mlx_ptr = mlx_init();
 	if (!game->graph.mlx_ptr)
-	{
-		ft_printf("mlx failed to init");
-		destroy_game(game);
-	}
+		err_message("mlx failed to init", game);
 	game->graph.mlx_win = mlx_new_window(game->graph.mlx_ptr,
 			45 * game->map->length, 45 * game->map->width, "so_long");
 	if (!game->graph.mlx_win)
-	{
-		ft_printf("mlx failed to init window");
-		destroy_game(game);
-	}
+		err_message("mlx failed to init window", game);
 }

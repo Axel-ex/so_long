@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 11:26:48 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/06 17:20:41 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:14:11 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,6 @@ bool	check_valid_path(t_map *map)
 		dup[i] = ft_strdup(map->matrix[i]);
 		if (!dup)
 			err_checkmap("failed allocation on path check", map);
-		i++;
-	}
-	i = 0;
-	t_point point = get_position(map);
-	int x = point.x;
-	int y = point.y;
-	printf("%d,%d\n", x, y);
-	while (dup[i])
-	{
-		printf("%s\n", dup[i]);
 		i++;
 	}
 	valid = flood_fill(map, dup, get_position(map));

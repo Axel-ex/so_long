@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 10:49:24 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 13:50:39 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:32:31 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,31 @@ void	err_checkmap(char *str, t_map *map)
 	exit(0);
 }
 
-void	put_image(t_game *game, t_sprite *sp, t_point pos)
+t_point	get_position(t_map *map)
 {
-	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-		sp->img, pos.x * sp->width,
-		pos.y * sp->height);
+	t_point	pos;
+
+	pos = (t_point){0, 0};
+	while (pos.y < map->width)
+	{
+		pos.x = 0;
+		while (pos.x < map->length)
+		{
+			if (map->matrix[pos.y][pos.x] == PLAYER)
+				return (pos);
+			pos.x++;
+		}
+		pos.y++;
+	}
+	return (pos);
+}
+
+void	destroy_matrix(t_map *map, char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->width)
+		free(matrix[i++]);
+	free(matrix);
 }

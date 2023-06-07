@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 11:26:48 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 10:33:38 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:35:38 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,28 @@ void	matrix_generator(t_map *map, char *str)
 	}
 }
 
+bool	check_valid_path(t_map *map)
+{
+	char	**dup;
+	bool	valid;
+	int		i;
+
+	i = 0;
+	dup = ft_calloc(map->width + 1, sizeof(char *));
+	if (!dup)
+		err_checkmap("failed allocation on path check", map);
+	while (i < map->width)
+	{
+		dup[i] = ft_strdup(map->matrix[i]);
+		if (!dup)
+			err_checkmap("failed allocation on path check", map);
+		i++;
+	}
+	valid = flood_fill(map, dup, get_position(map));
+	destroy_matrix(map, dup);
+	return (valid);
+}
+
 void	check_map(t_map *map)
 {
 	if (map->width == 0)
@@ -94,4 +116,6 @@ void	check_map(t_map *map)
 		err_checkmap("The map must contain 1 exit", map);
 	if (map->collect == 0)
 		err_checkmap("The map must contain at least one collectible", map);
+	if (check_valid_path(map) == false)
+		err_checkmap("The map must contain a valid path to the exit", map);
 }

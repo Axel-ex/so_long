@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 11:53:33 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:32:39 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,10 @@ void	destroy_player(t_game *game)
 
 void	destroy_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
 	if (!map)
 		return ;
 	if (map->matrix)
-	{
-		while (i < map->width)
-			free(map->matrix[i++]);
-		free(map->matrix);
-	}
+		destroy_matrix(map, map->matrix);
 	free(map);
 }
 
