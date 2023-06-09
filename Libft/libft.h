@@ -6,7 +6,7 @@
 /*   By: axelc <achabrer@student.42porto.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:06:04 by axelc             #+#    #+#             */
-/*   Updated: 2023/05/24 12:10:32 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:30:13 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	ft_putnbr_fd(int n, int fd);
 
 /*BONUS*/
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new_node);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new_node);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
@@ -75,6 +75,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 char	*get_next_line(int fd);
 
 /*PRINTF*/
-void	ft_printf(char const *format, ...);
+int		ft_printf(char const *format, ...);
 
 #endif

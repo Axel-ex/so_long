@@ -6,11 +6,10 @@
 /*   By: achabrer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:42:39 by achabrer          #+#    #+#             */
-/*   Updated: 2023/05/22 09:58:30 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:31:41 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
 #include "ft_printf.h"
 
 int	ft_printnb(int nb)

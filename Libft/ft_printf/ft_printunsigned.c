@@ -6,11 +6,10 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 08:52:21 by axelchab          #+#    #+#             */
-/*   Updated: 2023/05/22 10:39:06 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:32:17 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
 #include "ft_printf.h"
 
 static int	ft_nbsize(unsigned int nb)

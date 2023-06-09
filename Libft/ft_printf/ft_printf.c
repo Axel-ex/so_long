@@ -6,12 +6,11 @@
 /*   By: achabrer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:00:11 by achabrer          #+#    #+#             */
-/*   Updated: 2023/05/22 09:35:14 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:30:40 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 
 int	check_print(char c, va_list args)
 {

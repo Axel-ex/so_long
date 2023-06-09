@@ -6,11 +6,10 @@
 /*   By: achabrer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 09:28:26 by achabrer          #+#    #+#             */
-/*   Updated: 2023/05/22 11:31:24 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:32:07 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
 #include "ft_printf.h"
 
 static int	sizeptr(unsigned long long ptr)

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:51:08 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 13:32:58 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/07 14:38:10 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,21 @@ int	animate_torche(t_game *game)
 void	animate_death(t_game *game)
 {
 	int	i;
+	int	freq;
 
 	i = 0;
+	freq = 0;
 	while (i < 4)
 	{
-		mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-			game->p->anim_dead[i].img, game->p->anim_dead[i].width
-			* game->p->pos.x, game->p->anim_dead[i].height * game->p->pos.y);
-		usleep(10000);
-		i++;
+		if (freq % 777777777 == 0)
+		{
+			mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
+				game->p->anim_dead[i].img, game->p->anim_dead[i].width
+				* game->p->pos.x, game->p->anim_dead[i].height
+				* game->p->pos.y);
+			i++;
+		}
+		freq++;
 	}
 	ft_printf("YOU'RE DEAD");
 }
@@ -72,7 +78,6 @@ void	animate_out(t_game *game)
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp[1].img, sp[1].width * game->p->pos.x,
 		sp[1].height * game->p->pos.y);
-	usleep(10000);
 }
 
 void	animate_in(t_game *game)
@@ -90,7 +95,6 @@ void	animate_in(t_game *game)
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 		sp[2].img, sp[2].width * game->p->next_pos.x,
 		sp[2].height * game->p->next_pos.y);
-	usleep(10000);
 }
 
 void	put_image(t_game *game, t_sprite *sp, t_point pos)

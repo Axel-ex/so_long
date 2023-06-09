@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 10:49:24 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 11:13:28 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:33:45 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,11 @@ void	err_checkmap(char *str, t_map *map)
 	ft_printf("Error\n%s", str);
 	destroy_map(map);
 	exit(0);
+}
+
+int	err_message(char *str, t_game *game)
+{
+	ft_printf("Error\n%s", str);
+	destroy_game(game);
+	return (0);
 }
