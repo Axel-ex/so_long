@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:06:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/06 15:44:32 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:14:41 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ void	load_player(t_game *game)
 	game->p->sp_back = ft_calloc(1, sizeof(t_sprite));
 	game->p->sp_right = ft_calloc(1, sizeof(t_sprite));
 	game->p->sp_left = ft_calloc(1, sizeof(t_sprite));
-	game->p->sp_front[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-			PLAYER_FRONT1, &(game->p->sp_front[0].width),
-			&(game->p->sp_front[0].height));
-	game->p->sp_back[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-			PLAYER_BACK1, &(game->p->sp_back[0].width),
-			&(game->p->sp_back[0].height));
-	game->p->sp_right[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-			PLAYER_RIGHT1, &(game->p->sp_right[0].width),
-			&(game->p->sp_right[0].height));
-	game->p->sp_left[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
-			PLAYER_LEFT1, &(game->p->sp_left[0].width),
-			&(game->p->sp_left[0].height));
+	game->p->sp_front->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PLAYER_FRONT1, &(game->p->sp_front->width),
+			&(game->p->sp_front->height));
+	game->p->sp_back->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PLAYER_BACK1, &(game->p->sp_back->width),
+			&(game->p->sp_back->height));
+	game->p->sp_right->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PLAYER_RIGHT1, &(game->p->sp_right->width),
+			&(game->p->sp_right->height));
+	game->p->sp_left->img = mlx_xpm_file_to_image(game->graph.mlx_ptr,
+			PLAYER_LEFT1, &(game->p->sp_left->width),
+			&(game->p->sp_left->height));
 	game->p->pos = get_position(game->map);
 	game->p->flag_exit = 0;
 }

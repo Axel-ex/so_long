@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animations.c                                       :+:      :+:    :+:   */
+/*   animations_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:51:08 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 14:38:10 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:23:36 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,15 @@ int	animate_torche(t_game *game)
 void	animate_death(t_game *game)
 {
 	int	i;
-	int	freq;
 
 	i = 0;
-	freq = 0;
 	while (i < 4)
 	{
-		if (freq % 777777777 == 0)
-		{
-			mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
-				game->p->anim_dead[i].img, game->p->anim_dead[i].width
-				* game->p->pos.x, game->p->anim_dead[i].height
-				* game->p->pos.y);
-			i++;
-		}
-		freq++;
+		mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
+			game->p->anim_dead[i].img, game->p->anim_dead[i].width
+			* game->p->pos.x, game->p->anim_dead[i].height
+			* game->p->pos.y);
+		i++;
 	}
 	ft_printf("YOU'RE DEAD");
 }

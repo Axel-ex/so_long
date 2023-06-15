@@ -6,17 +6,16 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 11:32:32 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:36:25 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_UTILS_H
 # define SO_LONG_UTILS_H
-
+/*
 # define MACOS
-/* 
-# define LINUX
 */
+# define LINUX
 
 # define WALL '1'
 # define GROUND '0'
@@ -36,7 +35,7 @@
 # define TORCHE5 "assets/tiles/45x45/torche5.xpm"
 # define TORCHE6 "assets/tiles/45x45/torche6.xpm"
 
-# define PLAYER_FRONT1 "assets/tiles/45x45/Player_front.xpm"
+# define PLAYER_FRONT1 "assets/tiles/45x45/player_front.xpm"
 # define PLAYER_BACK1 "assets/tiles/45x45/Back.xpm"
 # define PLAYER_RIGHT1 "assets/tiles/45x45/Right.xpm"
 # define PLAYER_LEFT1 "assets/tiles/45x45/Left.xpm"
@@ -72,6 +71,16 @@
 #  define KEY_RIGHT	124
 #  define KEY_DOWN	125
 #  define ESC		53
+
+# endif
+
+# ifdef LINUX
+
+#  define KEY_UP	65362
+#  define KEY_LEFT	65361
+#  define KEY_RIGHT	65363
+#  define KEY_DOWN	65364
+#  define ESC		65307
 
 # endif
 
