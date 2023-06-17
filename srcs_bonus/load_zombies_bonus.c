@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 11:43:44 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/03 14:12:11 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:39:22 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 static void	alloc_enemies(t_game *game, int i)
 {
-	game->e[i] = calloc(1, sizeof(t_player));
+	game->e[i] = ft_calloc(1, sizeof(t_player));
 	if (!game->e)
 		err_message("failed to allocate enemies", game);
-	game->e[i]->sp_front = calloc(1, sizeof(t_sprite));
-	game->e[i]->sp_back = calloc(1, sizeof(t_sprite));
-	game->e[i]->sp_right = calloc(1, sizeof(t_sprite));
-	game->e[i]->sp_left = calloc(1, sizeof(t_sprite));
+	game->e[i]->sp_front = ft_calloc(1, sizeof(t_sprite));
+	game->e[i]->sp_back = ft_calloc(1, sizeof(t_sprite));
+	game->e[i]->sp_right = ft_calloc(1, sizeof(t_sprite));
+	game->e[i]->sp_left = ft_calloc(1, sizeof(t_sprite));
 	if (!game->e[i]->sp_front || !game->e[i]->sp_back
 		|| !game->e[i]->sp_right || !game->e[i]->sp_left)
 		err_message("failed to allocate zombie sprites", game);

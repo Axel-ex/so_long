@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:51:08 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 11:10:23 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/17 12:11:28 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,17 @@ void	animate_death(t_game *game)
 	freq = 800;
 	while (i < 4)
 	{
-		if (freq % j == 0)
+		if (j % freq == 0)
 		{
+			sleep(1);
 			mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,
 				game->p->anim_dead[i].img, game->p->anim_dead[i].width
 				* game->p->pos.x, game->p->anim_dead[i].height
 				* game->p->pos.y);
 			i++;
+			usleep(1000000);
+			put_image(game, game->sp_tiles[G].img, game->p->next_pos);
+			ft_printf("%d\n", i);
 		}
 		j++;
 	}

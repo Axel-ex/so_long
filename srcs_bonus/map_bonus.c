@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 11:26:48 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 13:35:38 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:54:26 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_map	*get_map(char *str)
 		ft_printf("the name of the file doesn't contain .ber extension");
 		return (NULL);
 	}
-	map = (t_map *)malloc(sizeof(t_map));
+	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (NULL);
 	init_check(map);
