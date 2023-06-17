@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 15:58:44 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:12:25 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	destroy_game(t_game *game)
 {
 	if (game->sp_torches)
-		destroy_sprites(game, game->sp_torches, 1);
+		destroy_sprites(game, game->sp_torches, 6);
 	if (game->sp_tiles)
 		destroy_sprites(game, game->sp_tiles, 3);
 	if (game->graph.img)
