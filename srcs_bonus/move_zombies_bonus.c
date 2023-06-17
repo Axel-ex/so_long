@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/15 16:38:38 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/17 13:20:03 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ char	next_move_zombie(t_game *game, int i)
 		return (ENEMIES);
 	if (game->e[i]->next_pos.x == game->p->pos.x
 		&& game->e[i]->next_pos.y == game->p->pos.y)
-	{
-		animate_death(game);
-		destroy_game(game);
-	}
+		game->is_dead = true;
 	return (GROUND);
 }
 

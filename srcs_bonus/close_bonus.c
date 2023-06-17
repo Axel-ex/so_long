@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 11:56:53 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:48:55 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ void	destroy_enemies(t_game *game)
 
 void	destroy_player(t_game *game)
 {
-	destroy_sprites(game, game->p->sp_front, 3);
-	destroy_sprites(game, game->p->sp_back, 3);
-	destroy_sprites(game, game->p->sp_right, 3);
-	destroy_sprites(game, game->p->sp_left, 3);
+	destroy_sprites(game, game->p->sp_front, 1);
+	destroy_sprites(game, game->p->sp_back, 1);
+	destroy_sprites(game, game->p->sp_right, 1);
+	destroy_sprites(game, game->p->sp_left, 1);
 	destroy_sprites(game, game->p->sp_exit, 4);
+	destroy_sprites(game, game->p->anim_dead, 4);
 	free(game->p);
 }
 

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/06 17:12:14 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:22:52 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_game
 	t_player		*p;
 	t_player		**e;
 	int				torche;
+	bool			is_dead;
 }	t_game;
 
 //MAP
@@ -123,13 +124,9 @@ int			render_frame(t_game *game);
 //ANIMATION
 int			animate_torche(t_game *game);
 void		animate_death(t_game *game);
-void		animate_out(t_game *game);
-void		animate_in(t_game *game);
 
 //LOAD_ANIM
 void		load_death_anim(t_game *game);
-void		load_anim_out(t_game *game);
-void		load_anim_in(t_game *game);
 
 //MOVES
 int			listen_key(int keycode, t_game *game);

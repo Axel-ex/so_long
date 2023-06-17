@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 11:26:48 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 11:14:11 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:36:48 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_map	*get_map(char *str)
 		ft_printf("the name of the file doesn't contain .ber extension");
 		return (NULL);
 	}
-	map = (t_map *)malloc(sizeof(t_map));
+	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (NULL);
 	init_check(map);
@@ -44,6 +44,7 @@ void	get_dimension(t_map *map, char *str)
 		if (!line)
 			break ;
 		map->width++;
+		free(line);
 	}
 	close(fd);
 }
@@ -59,10 +60,7 @@ void	matrix_generator(t_map *map, char *str)
 		return ;
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-	{
 		err_checkmap("no such file or directory", map);
-		return ;
-	}
 	i = 0;
 	while (1)
 	{
@@ -73,6 +71,7 @@ void	matrix_generator(t_map *map, char *str)
 		if (!map->matrix[i])
 			return ;
 		ft_strlcpy(map->matrix[i], line, ft_strlen(line));
+		free(line);
 		i++;
 	}
 }
@@ -102,11 +101,11 @@ bool	check_valid_path(t_map *map)
 void	check_map(t_map *map)
 {
 	if (map->width == 0)
-		err_checkmap("the map is empty", map);
+		err_checkmap("The map is empty", map);
 	if (!check_equal_line(map))
-		err_checkmap("the lines are unequal", map);
+		err_checkmap("The lines are unequal", map);
 	if (!check_accepted_char(map))
-		err_checkmap("the map contains unauthorized chars", map);
+		err_checkmap("The map contains unauthorized chars", map);
 	if (!check_walls(map))
 		err_checkmap("The map is not surrounded by walls", map);
 	check_numb_items(map);

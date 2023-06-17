@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 10:33:39 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:25:49 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,6 @@
 # define FRONT_DEATH3 "assets/tiles/45x45/front_death3.xpm"
 # define FRONT_DEATH4 "assets/tiles/45x45/front_death4.xpm"
 
-# define RIGHT_IN "assets/tiles/45x45/right_in.xpm"
-# define RIGHT_OUT "assets/tiles/45x45/right_out.xpm"
-# define LEFT_IN "assets/tiles/45x45/left_in.xpm"
-# define LEFT_OUT "assets/tiles/45x45/left_out.xpm"
-# define BACK_IN "assets/tiles/45x45/back_in.xpm"
-# define BACK_OUT "assets/tiles/45x45/back_out.xpm"
-# define FRONT_IN "assets/tiles/45x45/front_in.xpm"
-# define FRONT_OUT "assets/tiles/45x45/front_out.xpm"
-
 # ifdef MACOS
 
 #  define KEY_UP	126
@@ -93,7 +84,7 @@ typedef enum e_keys
 typedef enum e_mask
 {
 	KEYPRESS_MASK = (1L << 0),
-	DESTROY_MASK = (1L<<17),
+	DESTROY_MASK = (1L << 17),
 }	t_mask;
 
 typedef enum e_tiles_index

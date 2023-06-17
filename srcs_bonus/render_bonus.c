@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 14:45:57 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:22:33 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,13 @@ void	display_move(t_game *game)
 
 int	render_frame(t_game *game)
 {
-	animate_torche(game);
-	move_zombies(game);
-	display_move(game);
+	if (game->is_dead == true)
+		animate_death(game);
+	else
+	{
+		animate_torche(game);
+		move_zombies(game);
+		display_move(game);
+	}
 	return (0);
 }
