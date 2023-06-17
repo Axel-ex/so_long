@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_anim.c                                        :+:      :+:    :+:   */
+/*   load_anim_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:34:59 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/05 11:43:06 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/17 10:52:05 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	load_death_anim(t_game *game)
 {
-	game->p->anim_dead = calloc(4, sizeof(t_sprite));
+	game->p->anim_dead = ft_calloc(4, sizeof(t_sprite));
 	if (!game->p->anim_dead)
 		err_message("failed allocating animations", game);
 	game->p->anim_dead[0].img = mlx_xpm_file_to_image(game->graph.mlx_ptr,

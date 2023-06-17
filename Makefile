@@ -29,8 +29,6 @@ LIBFT		=	libft.a
 
 LIBMLX_LX	=	libmlx.a
 
-LIBMLX		=	libmlx.a
-
 MLX			=	-Lmlx -framework OpenGL -framework AppKit
 
 MLX_LINUX	=	-Lmlx_linux -Imlx_linux -lXext -lX11 -lm
