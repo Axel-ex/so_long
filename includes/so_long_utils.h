@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/15 16:36:25 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:15:03 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 # define MACOS
 */
-# define LINUX
+# define MACOS
 
 # define WALL '1'
 # define GROUND '0'
