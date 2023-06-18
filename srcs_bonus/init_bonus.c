@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:31:39 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/07 13:36:17 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:32:37 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,23 @@ void	graphic_init(t_game *game)
 			45 * game->map->length, 48 * game->map->width, "so_long");
 	if (!game->graph.mlx_win)
 		err_message("failed to init window", game);
+}
+
+bool	flood_fill(t_map *map, char **matrix, t_point pos)
+{
+	static bool	found_exit = false;
+	static int	torches = 0;
+
+	if (matrix[pos.y][pos.x] == WALL)
+		return (false);
+	if (matrix[pos.y][pos.x] == TORCHE)
+		torches++;
+	if (matrix[pos.y][pos.x] == EXIT)
+		found_exit = true;
+	matrix[pos.y][pos.x] = WALL;
+	flood_fill(map, matrix, (t_point){pos.x + 1, pos.y});
+	flood_fill(map, matrix, (t_point){pos.x - 1, pos.y});
+	flood_fill(map, matrix, (t_point){pos.x, pos.y + 1});
+	flood_fill(map, matrix, (t_point){pos.x, pos.y - 1});
+	return (torches == map->collect && found_exit);
 }

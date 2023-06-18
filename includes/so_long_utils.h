@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 15:25:49 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:21:20 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 # define MACOS
 */
-# define LINUX
+# define MACOS
 
 # define WALL '1'
 # define GROUND '0'
@@ -24,36 +24,36 @@
 # define TORCHE 'C'
 # define ENEMIES 'Z'
 
-# define WA "assets/tiles/45x45/Wall.xpm"
-# define GR "assets/tiles/45x45/Ground.xpm"
-# define EX "assets/tiles/45x45/Exit.xpm"
+# define WA "assets/tiles/Wall.xpm"
+# define GR "assets/tiles/Ground.xpm"
+# define EX "assets/tiles/Exit.xpm"
 
-# define TORCHE1 "assets/tiles/45x45/torche1.xpm"
-# define TORCHE2 "assets/tiles/45x45/torche2.xpm"
-# define TORCHE3 "assets/tiles/45x45/torche3.xpm"
-# define TORCHE4 "assets/tiles/45x45/torche4.xpm"
-# define TORCHE5 "assets/tiles/45x45/torche5.xpm"
-# define TORCHE6 "assets/tiles/45x45/torche6.xpm"
+# define TORCHE1 "assets/tiles/torche1.xpm"
+# define TORCHE2 "assets/tiles/torche2.xpm"
+# define TORCHE3 "assets/tiles/torche3.xpm"
+# define TORCHE4 "assets/tiles/torche4.xpm"
+# define TORCHE5 "assets/tiles/torche5.xpm"
+# define TORCHE6 "assets/tiles/torche6.xpm"
 
-# define PLAYER_FRONT1 "assets/tiles/45x45/player_front.xpm"
-# define PLAYER_BACK1 "assets/tiles/45x45/Back.xpm"
-# define PLAYER_RIGHT1 "assets/tiles/45x45/Right.xpm"
-# define PLAYER_LEFT1 "assets/tiles/45x45/Left.xpm"
+# define PLAYER_FRONT1 "assets/player_front.xpm"
+# define PLAYER_BACK1 "assets/Back.xpm"
+# define PLAYER_RIGHT1 "assets/Right.xpm"
+# define PLAYER_LEFT1 "assets/Left.xpm"
 
-# define PF_EXIT "assets/tiles/45x45/player_front_exit.xpm"
-# define PB_EXIT "assets/tiles/45x45/player_back_exit.xpm"
-# define PR_EXIT "assets/tiles/45x45/player_right_exit.xpm"
-# define PL_EXIT "assets/tiles/45x45/player_left_exit.xpm"
+# define PF_EXIT "assets/player_front_exit.xpm"
+# define PB_EXIT "assets/player_back_exit.xpm"
+# define PR_EXIT "assets/player_right_exit.xpm"
+# define PL_EXIT "assets/player_left_exit.xpm"
 
-# define ZOMBIE_FRONT "assets/tiles/45x45/zombie_front.xpm"
-# define ZOMBIE_BACK "assets/tiles/45x45/zombie_back.xpm"
-# define ZOMBIE_RIGHT "assets/tiles/45x45/zombie_right.xpm"
-# define ZOMBIE_LEFT "assets/tiles/45x45/zombie_left.xpm"
+# define ZOMBIE_FRONT "assets/zombie_front.xpm"
+# define ZOMBIE_BACK "assets/zombie_back.xpm"
+# define ZOMBIE_RIGHT "assets/zombie_right.xpm"
+# define ZOMBIE_LEFT "assets/zombie_left.xpm"
 
-# define FRONT_DEATH1 "assets/tiles/45x45/front_death1.xpm"
-# define FRONT_DEATH2 "assets/tiles/45x45/front_death2.xpm"
-# define FRONT_DEATH3 "assets/tiles/45x45/front_death3.xpm"
-# define FRONT_DEATH4 "assets/tiles/45x45/front_death4.xpm"
+# define FRONT_DEATH1 "assets/anim/front_death1.xpm"
+# define FRONT_DEATH2 "assets/anim/front_death2.xpm"
+# define FRONT_DEATH3 "assets/anim/front_death3.xpm"
+# define FRONT_DEATH4 "assets/anim/front_death4.xpm"
 
 # ifdef MACOS
 

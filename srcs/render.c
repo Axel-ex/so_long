@@ -6,39 +6,11 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:31:09 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 11:55:24 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:34:14 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	animate_torche(t_game *game)
-{
-	t_point		pos;
-	static int	i;
-
-	if (!i || i == 5)
-		i = 0;
-	pos.y = 0;
-	while (pos.y < game->map->width)
-	{
-		pos.x = 0;
-		while (pos.x < game->map->length)
-		{
-			if (game->map->matrix[pos.y][pos.x] == TORCHE)
-			{
-				mlx_put_image_to_window(game->graph.mlx_ptr,
-					game->graph.mlx_win, game->sp_torches[i].img,
-					game->sp_torches[i].width * pos.x,
-					game->sp_torches[i].height * pos.y);
-			}
-			pos.x++;
-		}
-		pos.y++;
-	}
-	i++;
-	return (i);
-}
 
 void	render_map(t_game *game)
 {

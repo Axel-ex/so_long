@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:47:28 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 15:22:52 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:33:29 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int			check_walls(t_map *map);
 void		init_check(t_map *check);
 void		game_init(t_map *map);
 void		graphic_init(t_game *game);
+bool		flood_fill(t_map *map, char **matrix, t_point pos);
 
 //SPRITES
 void		load_sprites(t_game *game);
@@ -125,9 +126,6 @@ int			render_frame(t_game *game);
 int			animate_torche(t_game *game);
 void		animate_death(t_game *game);
 
-//LOAD_ANIM
-void		load_death_anim(t_game *game);
-
 //MOVES
 int			listen_key(int keycode, t_game *game);
 char		next_move(t_game *game);
@@ -144,8 +142,7 @@ void		destroy_player(t_game *game);
 
 //UTILS
 int			quit_window(t_game *game);
-bool		flood_fill(t_map *map, char **matrix, t_point pos);
-int			err_message(char *str, t_game *game);
+void		err_message(char *str, t_game *game);
 void		put_image(t_game *game, t_sprite *sp, t_point pos);
 t_point		get_position(t_map *map);
 void		err_checkmap(char *str, t_map *map);
@@ -156,5 +153,6 @@ void		load_enemies(t_game *game);
 void		destroy_enemies(t_game *game);
 void		get_enemie_pos(t_game *game);
 int			move_zombies(t_game *game);
+void		load_death_anim(t_game *game);
 
 #endif

@@ -6,11 +6,13 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:13:34 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/01 10:44:44 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:35:28 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
@@ -23,8 +25,8 @@ int	main(int argc, char **argv)
 	}
 	map = get_map(argv[1]);
 	if (!map)
-		return (0);
+		return (EXIT_FAILURE);
 	check_map(map);
 	game_init(map);
-	return (0);
+	return (EXIT_SUCCESS);
 }

@@ -9,7 +9,7 @@ SRC			=	main.c map.c checks.c init.c\
 SRC_BONUS	=	main_bonus.c map_bonus.c checks_bonus.c init_bonus.c\
 			load_sprite_bonus.c render_bonus.c close_bonus.c moves_bonus.c\
 			utils_bonus.c load_zombies_bonus.c move_zombies_bonus.c\
-			animations_bonus.c load_anim_bonus.c utils_bonus2.c
+			animations_bonus.c
 
 SRC_DIR 	= srcs/
 
@@ -27,7 +27,7 @@ FLAGS		=	-Wall -Wextra -Werror
 
 LIBFT		=	libft.a
 
-LIBMLX_LX	=	libmlx.a
+LIBMLX	=	libmlx.a
 
 MLX			=	-Lmlx -framework OpenGL -framework AppKit
 
