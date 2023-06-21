@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 11:26:48 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 15:35:35 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:32:22 by axelchab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	matrix_generator(t_map *map, char *str)
 		free(line);
 		i++;
 	}
+	close(fd);
 }
 
 bool	check_valid_path(t_map *map)
