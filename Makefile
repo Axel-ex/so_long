@@ -27,7 +27,7 @@ FLAGS		=	-Wall -Wextra -Werror
 
 LIBFT		=	libft.a
 
-LIBMLX	=	libmlx.a
+LIBMLX_LX	=	libmlx.a
 
 MLX			=	-Lmlx -framework OpenGL -framework AppKit
 
@@ -70,7 +70,7 @@ $(OBJ_DIR):
 #################
 
 $(NAME): $(OBJ) $(LIBFT) $(LIBMLX_LX) $(OBJ_DIR)
-	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX_LINUX) $(OBJ_DIR)$(LIBMLX_LX) -o $(NAME)
+	cc -g $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX_LINUX) $(OBJ_DIR)$(LIBMLX_LX) -o $(NAME)
 
 bonus: $(OBJ_BONUS) $(LIBFT) $(LIBMLX_LX) $(OBJ_DIR)
 	cc -g $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ_BONUS)) $(OBJ_DIR)$(LIBFT) $(MLX_LINUX) $(OBJ_DIR)$(LIBMLX_LX) -o $(NAME)

@@ -6,7 +6,7 @@
 /*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:19:23 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/18 10:34:22 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:28:37 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ void	destroy_game(t_game *game)
 		destroy_sprites(game, game->sp_torches, 1);
 	if (game->sp_tiles)
 		destroy_sprites(game, game->sp_tiles, 3);
-	if (game->graph.img)
-		mlx_destroy_image(game->graph.mlx_ptr, game->graph.img);
-	if (game->graph.mlx_win)
-		mlx_destroy_window(game->graph.mlx_ptr, game->graph.mlx_win);
 	if (game->torche == game->map->collect && game->p->flag_exit)
 		ft_printf("YOU WON THE GAME");
 	if (game->map)
 		destroy_map(game->map);
 	if (game->p)
 		destroy_player(game);
+	if (game->graph.mlx_win)
+		mlx_destroy_window(game->graph.mlx_ptr, game->graph.mlx_win);
+	if (game->graph.mlx_ptr)
+		mlx_destroy_display(game->graph.mlx_ptr);
+	free(game->graph.mlx_ptr);
 	free(game);
 	exit(0);
 }
