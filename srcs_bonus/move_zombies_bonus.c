@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_zombies_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
+/*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 13:20:03 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:08:00 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	move_zombies(t_game *game)
 	int	i;
 	int	freq_move;
 
-	freq_move = 400;
+	freq_move = FREQ_MOVE;
 	if (game->torche == game->map->collect)
-		freq_move = 200;
+		freq_move = FREQ_MOVE / 2;
 	i = 0;
 	while (i < game->map->enemies)
 	{

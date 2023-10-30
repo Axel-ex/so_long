@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animations_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
+/*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 09:51:08 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/18 10:20:40 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:06:37 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	animate_death(t_game *game)
 	static int	i = 0;
 	static int	counter = 0;
 
-	freq = 25000;
+	freq = FREQ_ANIM;
 	if (++counter % freq != 0)
 		return ;
 	mlx_put_image_to_window(game->graph.mlx_ptr, game->graph.mlx_win,

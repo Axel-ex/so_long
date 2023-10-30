@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
+/*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/18 10:21:20 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:06:29 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_UTILS_H
 # define SO_LONG_UTILS_H
-/*
-# define MACOS
-*/
-# define MACOS
+
+# ifndef MACOS
+#  define MACOS 0
+# endif
 
 # define WALL '1'
 # define GROUND '0'
@@ -55,18 +55,19 @@
 # define FRONT_DEATH3 "assets/anim/front_death3.xpm"
 # define FRONT_DEATH4 "assets/anim/front_death4.xpm"
 
-# ifdef MACOS
+# if MACOS
 
+#  define FREQ_MOVE 3000
+#  define FREQ_ANIM	1000
 #  define KEY_UP	126
 #  define KEY_LEFT	123
 #  define KEY_RIGHT	124
 #  define KEY_DOWN	125
 #  define ESC		53
 
-# endif
-
-# ifdef LINUX
-
+# else
+#  define FREQ_ANIM 2500
+#  define FREQ_MOVE 400
 #  define KEY_UP	65362
 #  define KEY_LEFT	65361
 #  define KEY_RIGHT	65363

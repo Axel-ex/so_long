@@ -65,20 +65,19 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+	@ar rcs ${NAME} ${OBJS}
 	@echo "${GREEN}${NAME} was created ${RESET}"
 
 all: ${NAME}
 
 clean:
-	rm -rf ${OBJS} ${OBJBONUS}
-	@echo "${YELLOW}All objects files were deleted ${RESET}"
+	@rm -rf ${OBJS} ${OBJBONUS}
 
 fclean: clean
-	rm -rf ${NAME}
+	@rm -rf ${NAME}
 	@echo "${RED}${NAME} was deleted ${RESET}"
 
 re: fclean all

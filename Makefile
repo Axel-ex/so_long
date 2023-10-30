@@ -21,86 +21,72 @@ OBJ			=	$(SRC:.c=.o)
 
 OBJ_BONUS 	=	$(SRC_BONUS:.c=.o)
 
-INC			=	../includes/
+INC			=	includes
 
 FLAGS		=	-Wall -Wextra -Werror
 
 LIBFT		=	libft.a
 
-LIBMLX	=	libmlx.a
+LIBMLX		=	libmlx.a
 
-MLX			=	-Lmlx -framework OpenGL -framework AppKit
+MLX_DIR		=	mlx_linux/
 
-MLX_LINUX	=	-Lmlx_linux -Imlx_linux -lXext -lX11 -lm
+MLX_FALGS	=	-Lmlx_linux -Imlx_linux -lXext -lX11 -lm
 
+MODE 		=	linux
+
+ifeq ($(MODE), mac)
+	FLAGS += -D MACOS=1
+	MLX_FLAGS = -Lmlx -framework OpenGL -framework AppKit
+	MLX_DIR = mlx/
+endif
+
+GREEN		= \033[38;5;47m
+YELLOW		= \033[38;5;226m
+RED			= \033[38;5;196m
+RESET 		= \033[0m
 
 #GENERAL RULES
 %.o:$(SRC_DIR)%.c $(OBJ_DIR)
-	cc $(FLAGS) -c $< -o $(<:.c=.o)
-	mv $(SRC_DIR)*.o $(OBJ_DIR)
+	@cc $(FLAGS) -c $< -o $(<:.c=.o)
+	@@@mv $(SRC_DIR)*.o $(OBJ_DIR)
 
 %.o:$(SRC_BONUS_DIR)%.c $(OBJ_DIR)
-	cc $(FLAGS) -c $< -o $(<:.c=.o)
-	mv $(SRC_BONUS_DIR)*.o $(OBJ_DIR)
+	@@cc $(FLAGS) -c $< -o $(<:.c=.o)
+	@mv $(SRC_BONUS_DIR)*.o $(OBJ_DIR)
 
-all: $(NAME)
+all: $(NAME) | $(OBJ)
 
-allmac: $(NAME_MAC)
+$(NAME): $(OBJ) $(LIBFT) $(LIBMLX) | $(OBJ_DIR)
+	@cc $(FLAGS) $(MLX_FLAGS) -L$(OBJ_DIR) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX_DIR)$(LIBMLX) -o $(NAME)
+	@echo "[$(GREEN)compiling$(RESET)]: $(NAME)"
+	
+$(LIBFT): | $(OBJ_DIR)
+	@make -C Libft/
+	@mv Libft/$(LIBFT) $(OBJ_DIR)
+	@echo "[$(GREEN)compiling$(RESET)]: $(LIBFT)"
 
-$(LIBFT): $(OBJ_DIR)
-	make -C Libft/
-	mv Libft/$(LIBFT) $(OBJ_DIR)
-
-#LINUX
-$(LIBMLX_LX): $(OBJ_DIR)
-	make -C mlx_linux/
-	mv mlx_linux/$(LIBMLX_LX) $(OBJ_DIR)
-
-#MACOS
-$(LIBMLX): $(OBJ_DIR)
-	make -C mlx/
-	mv mlx/$(LIBMLX) $(OBJ_DIR)
+$(LIBMLX): | $(OBJ_DIR)
+	@make -C $(MLX_DIR)
+	@echo "[$(GREEN)compiling$(RESET)]: $(LIBMLX)"
 
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)
 
 
-#################
-#     LINUX     #
-#################
-
-$(NAME): $(OBJ) $(LIBFT) $(LIBMLX_LX) $(OBJ_DIR)
-	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX_LINUX) $(OBJ_DIR)$(LIBMLX_LX) -o $(NAME)
-
-bonus: $(OBJ_BONUS) $(LIBFT) $(LIBMLX_LX) $(OBJ_DIR)
-	cc -g $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ_BONUS)) $(OBJ_DIR)$(LIBFT) $(MLX_LINUX) $(OBJ_DIR)$(LIBMLX_LX) -o $(NAME)
-
-
-#################
-#     MACOS     #
-#################
-
-debug: $(OBJ) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
-	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_DIR), $(SRC)) -o $(NAME)
-
-debugbonus: $(OBJ_BONUS) $(OBJ_DIR) $(LIBFT) $(LIBMLX)
-	cc -g $(FLAGS) -I $(INC) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) $(addprefix $(SRC_BONUS_DIR), $(SRC_BONUS)) -o $(NAME)
-
-$(NAME_MAC): $(OBJ) $(LIBFT) $(LIBMLX) $(OBJ_DIR)
-	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ)) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) -o $(NAME)
-
-bonus_mac: $(OBJ_BONUS) $(LIBFT) $(LIBMLX) $(OBJ_DIR)
-	cc $(FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ_BONUS)) $(OBJ_DIR)$(LIBFT) $(MLX) $(OBJ_DIR)$(LIBMLX) -o $(NAME)
+bonus: $(OBJ_BONUS) $(LIBFT) $(LIBMLX) | $(OBJ_DIR)
+	@cc -g $(FLAGS) $(MLX_FLAGS) -I $(INC) $(addprefix $(OBJ_DIR),$(OBJ_BONUS)) $(OBJ_DIR)$(LIBFT) $(MLX_DIR)$(LIBMLX) -o $(NAME)
+	@echo "[$(GREEN)compiling$(RESET)]: $<"
 
 clean:
-	rm -rf $(OBJ_DIR)
-	make clean -C Libft/
-	make clean -C mlx/
-	make clean -C mlx_linux/
+	@rm -rf $(OBJ_DIR)*.o
+	@make clean -C Libft/
+	@echo "$(YELLOW)Removing objects files$(RESET)"
 
 fclean: clean
-	rm -rf $(NAME)
-	make fclean -C Libft/
+	@rm -rf $(NAME)
+	@make fclean -C Libft/
+	@echo "$(RED)removing $(NAME) executable$(RESET)"
 
 re: fclean all
 
