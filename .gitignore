@@ -3,3 +3,4 @@ obj/
 so_long.dSYM/
 so_long
 Libft/*.o
+.gitignore
