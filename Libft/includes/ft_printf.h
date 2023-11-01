@@ -6,7 +6,7 @@
 /*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:33:33 by achabrer          #+#    #+#             */
-/*   Updated: 2023/11/01 14:29:08 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:03:43 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "../srcs_libft/libft.h"
+# include "libft.h"
 
 int		ft_printf(const char *format, ...);
 int		check_print(char c, va_list args);
@@ -27,7 +27,6 @@ int		ft_printptr(unsigned long long ptr);
 int		ft_printhexa(unsigned int nb);
 int		ft_printhexa_up(unsigned int nb);
 int		ft_printunsigned(unsigned int nb);
-int		nb_size(int nb);
 int		size_hexa(unsigned int nb);
 
 #endif

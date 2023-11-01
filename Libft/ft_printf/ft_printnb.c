@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printnb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achabrer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:42:39 by achabrer          #+#    #+#             */
-/*   Updated: 2023/06/09 17:31:41 by axelchab         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:59:40 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_printnb(int nb)
 {

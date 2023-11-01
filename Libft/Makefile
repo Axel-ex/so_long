@@ -4,7 +4,7 @@ NAME 		=	libft.a
 # Directories
 SRC_DIR		=	.
 OBJ_DIR 	=	obj
-INCLUDES 	= 	-I srcs_libft -I get_next_line -I ft_printf
+INCLUDES 	= 	-I includes
 
 # Compiler and flags
 CC 			= 	cc
