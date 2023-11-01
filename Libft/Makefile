@@ -1,84 +1,47 @@
-NAME = libft.a
+# Project name and the output archive file
+NAME 		=	libft.a
 
-SRCS = ft_isalpha.c\
-	   ft_isdigit.c\
-	   ft_isalnum.c\
-	   ft_isascii.c\
-	   ft_isprint.c\
-	   ft_strlen.c\
-	   ft_memset.c\
-	   ft_bzero.c\
-	   ft_memcpy.c\
-	   ft_memmove.c\
-	   ft_strlcpy.c\
-	   ft_strlcat.c\
-	   ft_toupper.c\
-	   ft_tolower.c\
-	   ft_strchr.c\
-	   ft_strrchr.c\
-	   ft_strncmp.c\
-	   ft_memchr.c\
-	   ft_memcmp.c\
-	   ft_strnstr.c\
-	   ft_atoi.c\
-	   ft_calloc.c\
-	   ft_strdup.c\
-	   ft_substr.c\
-	   ft_strjoin.c\
-	   ft_strtrim.c\
-	   ft_split.c\
-	   ft_itoa.c\
-	   ft_strmapi.c\
-	   ft_striteri.c\
-	   ft_putchar_fd.c\
-	   ft_putstr_fd.c\
-	   ft_putendl_fd.c\
-	   ft_putnbr_fd.c\
-	   ft_lstnew.c\
-	   ft_lstadd_front.c\
-	   ft_lstsize.c\
-	   ft_lstlast.c\
-	   ft_lstadd_back.c\
-	   ft_lstdelone.c\
-	   ft_lstclear.c\
-	   ft_lstiter.c\
-	   ft_lstmap.c\
-	   get_next_line/get_next_line.c\
-	   get_next_line/get_next_line_utils.c\
-	   ft_printf/ft_printf.c\
-	   ft_printf/ft_printnb.c\
-	   ft_printf/ft_printptr.c\
-       ft_printf/ft_printstr.c\
-       ft_printf/ft_printunsigned.c\
-       ft_printf/ft_printhexa.c\
+# Directories
+SRC_DIR		=	.
+OBJ_DIR 	=	obj
+INCLUDES 	= 	-I srcs_libft -I get_next_line -I ft_printf
 
-OBJS = ${SRCS:.c=.o}
+# Compiler and flags
+CC 			= 	cc
+CFLAGS 		= 	-Wall -Wextra -Werror
 
-RED =  \033[38;5;196m
-GREEN = \033[38;5;47m
-YELLOW = \033[38;5;226m
-CYAN = \033[0;36m
-RESET = \033[0m
+GREEN		= \033[38;5;47m
+YELLOW		= \033[38;5;226m
+RED			= \033[38;5;196m
+RESET 		= \033[0m
 
-CC = cc
+# List of source files
+SRC_FILES	=	$(wildcard $(SRC_DIR)/srcs_libft/*.c) \
+            	$(wildcard $(SRC_DIR)/get_next_line/*.c) \
+            	$(wildcard $(SRC_DIR)/ft_printf/*.c)
 
-CFLAGS = -Wall -Wextra -Werror
+# List of object files
+OBJ_FILES 	=	$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
-%.o: %.c
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS}
-	@ar rcs ${NAME} ${OBJS}
-	@echo "${GREEN}${NAME} was created ${RESET}"
+all: $(NAME)
 
-all: ${NAME}
+$(NAME): $(OBJ_FILES)
+	@ar rcs $@ $^
+	@echo "[$(GREEN)DONE$(RESET)]: $(NAME)"	
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@echo "[$(GREEN)compiling$(RESET)]: $<"
 
 clean:
-	@rm -rf ${OBJS} ${OBJBONUS}
+	@rm -rf $(OBJ_DIR)
+	@echo "$(YELLOW)Removing libft objects files$(RESET)"
 
 fclean: clean
-	@rm -rf ${NAME}
-	@echo "${RED}${NAME} was deleted ${RESET}"
+	@rm -f $(NAME)
+	@echo "$(RED)removing $(NAME) executable$(RESET)"
 
 re: fclean all
 
