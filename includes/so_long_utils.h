@@ -6,7 +6,7 @@
 /*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:26:27 by axelchab          #+#    #+#             */
-/*   Updated: 2023/10/30 17:06:29 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/11/02 09:16:47 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 
 # if MACOS
 
-#  define FREQ_MOVE 3000
-#  define FREQ_ANIM	1000
+#  define FREQ_MOVE 120
+#  define FREQ_ANIM	80
 #  define KEY_UP	126
 #  define KEY_LEFT	123
 #  define KEY_RIGHT	124
