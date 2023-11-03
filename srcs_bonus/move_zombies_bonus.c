@@ -6,7 +6,7 @@
 /*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 12:53:02 by axelchab          #+#    #+#             */
-/*   Updated: 2023/10/30 17:08:00 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:18:31 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	move_zombies(t_game *game)
 	{
 		pick_move(game, i);
 		if (next_move_zombie(game, i) == GROUND
-			&& game->e[0]->moves % freq_move == 0)
+			&& game->e[0]->moves % freq_move == 0 && !game->is_dead)
 		{
 			game->map->matrix[game->e[i]->pos.y][game->e[i]->pos.x] = GROUND;
 			game->map->matrix[game->e[i]->next_pos.y]

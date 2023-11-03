@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axelchab <achabrer@student.42porto.co      +#+  +:+       +#+        */
+/*   By: achabrer <achabrer@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:33:13 by axelchab          #+#    #+#             */
-/*   Updated: 2023/06/17 15:22:57 by achabrer         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:11:35 by achabrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	move_player(t_game *game)
 		put_image(game, &(prev), game->p->pos);
 		put_image(game, sp, game->p->next_pos);
 		game->p->pos = game->p->next_pos;
+		game->p->moves++;
 	}
 	if (next_move(game) == EXIT)
 		move_exit(game);
-	game->p->moves++;
 }
 
 void	move_exit(t_game *game)
